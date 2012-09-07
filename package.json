@@ -8,6 +8,7 @@
     "rework": "./bin/rework"
   },
   "dependencies": {
+    "batch": "*",
     "css": "1.0.3",
     "commander": "1.0.4"
   },
