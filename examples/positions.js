@@ -30,14 +30,14 @@ function positions() {
             value: n
           });
         }
-        
+
       });
     });
   }
 }
 
-var css = rework(read('examples/positions.css', 'utf8'))
+rework(read('examples/positions.css', 'utf8'))
   .use(positions())
-  .toString()
-
-console.log(css);
+  .toString(function(css) {
+      console.log(css);
+    })

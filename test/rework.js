@@ -14,16 +14,18 @@ describe('rework', function(){
     it('should prefix the value', function(){
       rework(fixture('prefix-value'))
         .use(rework.prefixValue('transform', vendors))
-        .toString()
-        .should.equal(fixture('prefix-value.out'));
+        .toString(function(css) {
+          css.should.equal(fixture('prefix-value.out'));
+        })
     })
 
     it('should utilize .vendors()', function(){
       rework(fixture('prefix-value'))
         .vendors(vendors)
         .use(rework.prefixValue('transform'))
-        .toString()
-        .should.equal(fixture('prefix-value.out'));
+        .toString(function(css) {
+          css.should.equal(fixture('prefix-value.out'));
+        })
     })
   })
 
@@ -31,15 +33,17 @@ describe('rework', function(){
     it('should add device-pixel-ratio rules', function(){
       rework(fixture('at2x'))
         .use(rework.at2x(vendors))
-        .toString()
-        .should.equal(fixture('at2x.out'));
+        .toString(function(css) {
+          css.should.equal(fixture('at2x.out'));
+        })
     })
 
     it('should add vendor prefixed device-pixel-ratio rules', function(){
       rework(fixture('at2x-complex'))
         .use(rework.at2x(vendors))
-        .toString()
-        .should.equal(fixture('at2x-complex.out'));
+        .toString(function(css) {
+          css.should.equal(fixture('at2x-complex.out'));
+        })
     })
   })
 
@@ -49,8 +53,9 @@ describe('rework', function(){
         .vendors(vendors)
         .use(rework.prefix('border-radius'))
         .use(rework.prefix('box-shadow'))
-        .toString()
-        .should.equal(fixture('prefix.out'));
+        .toString(function(css) {
+          css.should.equal(fixture('prefix.out'));
+        })
     })
   })
 
@@ -58,8 +63,9 @@ describe('rework', function(){
     it('should prefix selectors', function(){
       rework(fixture('prefix-selectors'))
         .use(rework.prefixSelectors('#dialog'))
-        .toString()
-        .should.equal(fixture('prefix-selectors.out'));
+        .toString(function(css) {
+          css.should.equal(fixture('prefix-selectors.out'));
+        })
     })
   })
 
@@ -68,8 +74,9 @@ describe('rework', function(){
       rework(fixture('opacity'))
         .vendors(vendors)
         .use(rework.opacity())
-        .toString()
-        .should.equal(fixture('opacity.out'));
+        .toString(function(css) {
+          css.should.equal(fixture('opacity.out'));
+        })
     })
   })
 
@@ -80,8 +87,9 @@ describe('rework', function(){
         .use(rework.keyframes())
         .use(rework.opacity())
         .use(rework.prefix('border-radius'))
-        .toString()
-        .should.equal(fixture('keyframes.out'));
+        .toString(function(css) {
+          css.should.equal(fixture('keyframes.out'));
+        })
     })
   })
 })

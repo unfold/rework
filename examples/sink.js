@@ -2,7 +2,7 @@
 var rework = require('..')
   , read = require('fs').readFileSync;
 
-var css = rework(read('examples/sink.css', 'utf8'))
+rework(read('examples/sink.css', 'utf8'))
   .vendors(['-webkit-', '-moz-'])
   .use(rework.keyframes())
   .use(rework.prefixValue('transform'))
@@ -12,6 +12,6 @@ var css = rework(read('examples/sink.css', 'utf8'))
   .use(rework.prefix('transform'))
   .use(rework.prefix('transition'))
   .use(rework.prefix('box-shadow'))
-  .toString()
-
-console.log(css);
+  .toString(function(css) {
+    console.log(css);
+  })
